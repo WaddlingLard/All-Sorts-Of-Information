@@ -26,6 +26,22 @@
 
 ## Project Wireframe
 
-TODO: Replace the wireframe below with you own design.
+Landing Page
 
-![wireframe](wireframe-example.png)
+![Landing](/img/landing.png)
+
+All Links Page
+
+![All Links](/img/all_links.png)
+
+Topic Example
+
+![Topic](/img/topic.png)
+
+Discussion Board
+
+![Discussion](/img/discussion_board.png)
+
+About Us/Contact
+
+![About/Contact](/img/aboutus_contact.png)
