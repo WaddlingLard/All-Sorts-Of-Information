@@ -32,6 +32,10 @@ body {
   opacity: 0%;
 }
 
+.flex-spacer {
+  border: 0px;
+}
+
 
 /* #top h1 {
   font-size: 3em;
