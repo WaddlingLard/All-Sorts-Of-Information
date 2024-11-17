@@ -50,7 +50,7 @@ body {
   /* margin: 50px; */
   /* padding: 10px 50px 10px 50px; */
   padding: 25px;
-  margin: 37.5px 87.5px 37.5px 87.5px;
+  margin: 37.5px 97.5px 37.5px 97.5px;
   background: green;
 
   /* flex: .3; */
@@ -65,7 +65,7 @@ body {
 #title {
   /* border: 1px black solid; */
   /* display: inline-block; */
-  margin: 75px;
+  margin: 85px;
   /* padding: 0px 12.5px 0px 12.5px; */
   font-size: 3em;
   /* flex: 1; */
