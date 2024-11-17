@@ -142,3 +142,20 @@ h2 {
 
   /* padding: 0px 250px 0px 250px; */
 }
+
+#footer-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  text-align: center;
+}
+
+#footer-content h3 {
+  /* text-align: center; */
+  margin: 5px 0px;
+  padding: 0px 75px 0px 75px;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+}
