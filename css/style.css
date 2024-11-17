@@ -5,21 +5,136 @@
 
 body {
   text-align: center;
-
+  background-color: white;
+  
   font-family: Arial, Helvetica, sans-serif;
   /* ^^ Will likely change the font later */
 }
 
 /* Holds all of the information at the top */
 #top {
+  /* display: flex-box; */
   display: flex;
-  justify-content: center;
-  font-size: 2em;
+  /* justify-content: center; */
+  
+  justify-content: space-between;
+  
+  /* font-size: 2em; */
 }
 
+.divider {
+  width: 80%;
+}
+
+.spacer {
+  width: 90%;
+  border: 0px;
+  opacity: 0%;
+}
+
+
+/* #top h1 {
+  font-size: 3em;
+  flex: 3;
+} */
+
 #logo {
-  width: 10%;
-  height: 10%;
-  padding: 10px 0px 0px 0px;
+  /* position: absolute; */
   
+  /* display: inline-block; */
+
+  /* margin: 50px; */
+  /* padding: 10px 50px 10px 50px; */
+  padding: 25px;
+  margin: 37.5px 87.5px 37.5px 87.5px;
+  background: green;
+
+  /* flex: .3; */
+  /* top: 10mm; */
+  /* left: 10mm; */
+  border-radius: 75px;
+  border: 2px black solid;
+  width: 5%;
+  height: 5%;
+}
+
+#title {
+  /* border: 1px black solid; */
+  /* display: inline-block; */
+  margin: 75px;
+  /* padding: 0px 12.5px 0px 12.5px; */
+  font-size: 3em;
+  /* flex: 1; */
+}
+
+#login-window {
+  display: inline-block;
+  /* background: rgb(206, 195, 174); */
+  background: white;
+  padding: 25px 10px 0px 10px;
+  margin: 25px;
+  /* flex: .3; */
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  border: 1px black solid;
+  border-radius: 15px;
+}
+
+
+.login-button {
+  font-family: inherit;
+}
+
+#login-text {
+  margin: 10px 0px 0px 0px;
+}
+
+#navigation {
+  /* display: flex; */
+  /* display: grid; */
+  /* grid-template-rows: 1fr 1fr 1fr 1fr 1fr; */
+  /* grid-template-columns: 1fr 1fr 1fr 1fr 1fr; */
+  /* display: inline-block; */
+  border: 1px black solid;
+  border-radius: 10px;
+
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#nav-choices {
+  /* grid-column: 1; */
+  display: flex;
+  /* justify-content: space-evenly; */
+}
+
+#search-form {
+  padding: 10px
+}
+
+h2 {
+  font-size: 1.75em;
+}
+
+
+.link {
+  padding: 10px;
+  
+}
+
+#content-section {
+  display: flex;
+}
+
+
+
+#content {
+  border: 1px black solid;
+  border-radius: 35px;
+  /* padding: 25px; */
+
+  padding: 0px 25px 0px 25px;
+
+  text-align: left;
+
+  /* padding: 0px 250px 0px 250px; */
 }
