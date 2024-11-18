@@ -6,20 +6,48 @@
 body {
   text-align: center;
   background-color: white;
-  
   font-family: Arial, Helvetica, sans-serif;
   /* ^^ Will likely change the font later */
+}
+
+header {
+  justify-content: space-between;
+  /* position: sticky; */
+  /* top: 0px; */
 }
 
 /* Holds all of the information at the top */
 #top {
   /* display: flex-box; */
-  display: flex;
+  /* display: flex; */
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr 2fr 1fr;
   /* justify-content: center; */
   
-  justify-content: space-between;
+  /* justify-content: space-between; */
   
   /* font-size: 2em; */
+}
+
+#header-left-col {
+  border-top: 1px black solid;
+  border-left: 1px black solid;
+  border-bottom: 1px black solid;
+
+  border-radius: 50% 0% 0% 50%
+}
+
+#header-right-col {
+  border-top: 1px black solid;
+  border-right: 1px black solid;
+  border-bottom: 1px black solid;
+
+  border-radius: 0% 50% 50% 0%;
+}
+
+#header-center-col {
+  border-top: 1px black solid;
+  border-bottom: 1px black solid;
 }
 
 .divider {
@@ -49,17 +77,19 @@ body {
 
   /* margin: 50px; */
   /* padding: 10px 50px 10px 50px; */
-  padding: 25px;
-  margin: 37.5px 97.5px 37.5px 97.5px;
+  padding: 15px;
+  margin: 37.5px 125px 37.5px 100px;
   background: green;
 
   /* flex: .3; */
   /* top: 10mm; */
   /* left: 10mm; */
-  border-radius: 75px;
+  /* border-radius: 75px; */
+  border-radius: 100% 55%;
   border: 2px black solid;
-  width: 5%;
-  height: 5%;
+  /* width: fit-content; */
+  width: 25%;
+  /* height: 25%; */
 }
 
 #title {
@@ -75,8 +105,8 @@ body {
   display: inline-block;
   /* background: rgb(206, 195, 174); */
   background: white;
-  padding: 25px 10px 0px 10px;
-  margin: 25px;
+  padding: 25px 10px 10px 10px;
+  margin: 50px 0px 0px 0px;
   /* flex: .3; */
   font-family: Georgia, 'Times New Roman', Times, serif;
   border: 1px black solid;
@@ -93,16 +123,28 @@ body {
 }
 
 #navigation {
+  position: sticky;
+  top: 10px;
+  /* left: 0px; */
   /* display: flex; */
   /* display: grid; */
   /* grid-template-rows: 1fr 1fr 1fr 1fr 1fr; */
   /* grid-template-columns: 1fr 1fr 1fr 1fr 1fr; */
   /* display: inline-block; */
+  background-color: white;
   border: 1px black solid;
   border-radius: 10px;
 
+  /* justify-content: center; */
+  /* text-align: center; */
   display: flex;
   justify-content: space-evenly;
+  /* animation-duration: 1s; */
+  transition-duration: 1s;
+}
+
+#navigation:hover { 
+  opacity: 75%;
 }
 
 #nav-choices {
@@ -137,6 +179,10 @@ h2 {
   /* padding: 25px; */
 
   padding: 0px 25px 0px 25px;
+
+  /* overflow: scroll; */
+  /* overflow:hidden; */
+  /* overflow:auto; */
 
   text-align: left;
 
