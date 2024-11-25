@@ -189,6 +189,22 @@ h2 {
   /* padding: 0px 250px 0px 250px; */
 }
 
+#add-page {
+  text-align: center;
+  padding: 10px 0px;
+}
+
+#add-page a {
+  border: 1px black solid;
+  padding: 5px;
+  background-color: aliceblue;
+  /* transition-duration: .5s; */
+}
+
+/* #add-page a::hover {
+  background-color:
+} */
+
 #footer-content {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;

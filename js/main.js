@@ -7,13 +7,17 @@ let pageID = sessionStorage.getItem('pageID');
  * Simple Function that will be run when the browser is finished loading.
  */
 function loaded() {
+
     // Assign to a variable so we can set a breakpoint in the debugger!
     const hello = sayHello();
     console.log(hello);
     console.log("The page loaded!");
 
     // console.log("The article that needs to be loaded is. " + articleID);
-    console.log(pageID);
+    if (pageID) {
+        console.log(pageID);
+    }
+
 }
 
 /**
@@ -24,6 +28,10 @@ export function sayHello() {
     return 'hello';
 }
 
+/**
+ * Sets the articleID with a provided value. This method is deprecated.
+ * @param {string} id 
+ */
 export async function setArticle(id) {
     console.log(id);
     articleID = id;

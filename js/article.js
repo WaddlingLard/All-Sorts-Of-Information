@@ -14,7 +14,7 @@ const links = document.querySelector("#link-list");
 function loaded() {
 
     console.log("Loading Articles!");
-    const linkAPIRoute = "https://06hoz1o347.execute-api.us-east-2.amazonaws.com/article";
+    const articleAPIRoute = "https://06hoz1o347.execute-api.us-east-2.amazonaws.com/article";
 
     try {
 
@@ -25,42 +25,42 @@ function loaded() {
 
         xhr.addEventListener("load", function() {
 
-        console.log("Loaded!");
-        // Making sure the body is clean
-        if (xhr.status === 200) { 
-            links.innerHTML = "";
-        }
+            console.log("Loaded!");
+            // Making sure the body is clean
+            if (xhr.status === 200) { 
+                links.innerHTML = "";
+            }
 
-        xhr.response.forEach(element => {
-            const listItem = document.createElement("li");
-            const link = document.createElement("a");
+            xhr.response.forEach(element => {
+                const listItem = document.createElement("li");
+                const link = document.createElement("a");
 
-            // Grabbing the id
-            let id = element.article_id;
-            console.log(id);
+                // Grabbing the id
+                let id = element.article_id;
+                // console.log(id);
 
-            link.href = `article.html`;
-            link.addEventListener("click", async function () {
+                link.href = `article.html`;
+                link.addEventListener("click", async function () {
 
-                // Setting id to be loaded
-                sessionStorage.setItem('pageID', id);
-                console.log("Clicked!")
+                    // Setting id to be loaded
+                    sessionStorage.setItem('pageID', id);
+                    // console.log("Clicked!")
 
-                // await setArticle(element.id);
-                // wait(2000).then();
+                    // await setArticle(element.id);
+                    // wait(2000).then();
+                });
+                link.innerHTML = `${element.title}`;
+
+                // Adding link to the list item
+                listItem.appendChild(link);
+
+                // Adding the list item to the list
+                links.appendChild(listItem);
             });
-            link.innerHTML = `${element.title}`;
-
-            // Adding link to the list item
-            listItem.appendChild(link);
-
-            // Adding the list item to the list
-            links.appendChild(listItem);
-        });
 
         });
 
-        xhr.open("GET", linkAPIRoute);
+        xhr.open("GET", articleAPIRoute);
         // Send request
         xhr.send();
 
