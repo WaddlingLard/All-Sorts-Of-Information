@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <title>All Sorts of Information Landing</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta name="author" content="BrianWu">
+    <link rel="stylesheet" href="css/style.css">
+    <script type="module" src="js/main.js"></script>
+
+  </head>
+
+  <body>
+
+    <header>
+
+      <div id="top">
+
+        <hr class="spacer">
+
+
+        <!-- <img id="logo" src="img/placeholder.jpg"> -->
+        
+        <div id="header-left-col">
+        
+          <a href="#">
+            <img id="logo" src="img/www-placeholder.png">
+          </a>
+          <!-- <img id="logo" src="img/www-placeholder.png"> -->
+        
+        </div>
+        
+        <div id="header-center-col">
+
+          <h1 id="title">A.S.O.I</h1>
+        
+        </div>
+
+        <!-- <img src="img/placeholder.jpg" hidden> -->
+
+        <div id="header-right-col">
+
+          <div id="login-window">
+            <!-- VV CHANGE VV -->
+            <form action="index.html" method="POST">
+
+              <table id="login-table">
+                <caption>Login Window</caption>
+                <thead>
+                  <tr>
+                    <!-- <th colspan="col">Info</th> -->
+                    <th colspan="col"></th>
+                    <th colspan="col"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <!-- <th colspan="col"> -->
+                      <!-- <label for="username">Username: </label> -->
+                    <!-- </th> -->
+                    <td colspan="col">
+                      <input type="text" name="username" id="username" placeholder="Username">
+                    </td>
+                    <td colspan="row">
+                      <button class="login-button">Sign up</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <!-- <th colspan="col"> -->
+                      <!-- <label for="password">Password: </label> -->
+                    <!-- </th> -->
+                    <td colspan="col">
+                      <input type="password" name="password" id="password" placeholder="Password">
+                    </td>
+                    <td colspan="row">
+                      <button class="login-button" type="submit">Login</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+                <!-- WHEN USER LOGS IN -->
+                <p id="login-text" hidden>Hello, {USER}!</p>
+
+              </form>
+              
+            </div>
+
+          </div>
+
+        </div>
+
+        <hr class="spacer">
+
+      </div>
+
+    </header>
+
+    <div id="navigation">
+
+      <!-- <hr class="flex-spacer"> -->
+
+      <nav>
+
+        <div id="nav-choices">
+
+          <a class="link" href="#">Topics</a>
+          <a class="link" href="#">Discussions</a>
+          <a class="link" href="#">About Us</a>
+          <a class="link" href="#">Users? (W.I.P)</a>
+
+          <div id="search-form">
+            <!-- VV CHANGE VV -->
+            <form action="index.html" method="GET">
+              <label for="search">Search: </label>
+
+
+              <input type="text" id="search" name="search">
+              <!-- Make a select searchable with text -->
+              <select></select>
+
+
+              <button type="submit">Look For</button>
+            </form>
+          </div>
+
+        </div>
+
+      </nav>
+
+      <!-- <hr class="flex-spacer"> -->
+      
+    </div>
+
+
+
+    <hr class="divider">
+
+    <div id="content-section">
+      <hr class="spacer">
+
+      <article>
+        <!-- <h2>Hello.......</h2> -->
+        <h2>Topics</h2>
+
+        <div id="content">
+          <h3>Links</h3>
+          
+          <!-- Add content from the topics table -->
+        </div>
+      </article>
+
+      <hr class="spacer">
+    </div>
+
+    <hr class="divider">
+
+    <footer>
+
+      <!-- <hr class="spacer"> -->
+      <hr class="flex-spacer">
+
+      <div id="footer-content">
+        <div id="footer-left-col">
+          <h3>Contact Me</h3>
+          <p>
+            <a href="mailto: brianwu@u.boisestate.edu">My Email!</a>
+          </p>
+          <p>
+            <a href="https://github.com/WaddlingLard">GitHub</a>
+          </p>
+        </div>
+
+        <div id="footer-center-col">
+          <h3>Users</h3>
+          <p>
+            <a class="link" href="#">Users? (W.I.P)</a>
+          </p>
+        </div>
+
+        <div id="footer-right-col">
+          <h3>About Us</h3>
+          <p>
+            <a class="link" href="#">About Us</a>
+    
+          </p>
+        </div>
+      </div>
+
+      <!-- <hr class="spacer"> -->
+      <hr class="flex-spacer">
+
+      <script>
+        
+        function loaded() {
+
+          const linkAPIRoute = "";
+
+
+          let xhr = new XMLHttpRequest();
+
+          try {
+            xhr.open("GET", "linkAPIRoute");
+            xhr.responseType('json');
+
+            xhr.addEventListener("load", function() {
+
+              // if (xhr.status === 200) {
+                
+              // }
+
+              xhr.response.forEach(element => {
+                
+              });
+
+            });
+
+          } catch (error) {
+            console.error(`XHR error code ${xhr.status}`);
+          }
+
+        }
+
+
+      </script>
+
+      
+    </footer>
+    
+  </body>
+
+</html>
