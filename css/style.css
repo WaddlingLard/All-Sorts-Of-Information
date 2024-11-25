@@ -216,6 +216,7 @@ h2 {
   border: 1px black solid;
   padding: 10px;
   border-spacing: 10px; 
+  border-radius: 35px;
 }
 
 /* #article-content {
@@ -225,6 +226,10 @@ h2 {
 /* #add-page a::hover {
   background-color:
 } */
+
+.red {
+  color: red;
+}
 
 #footer-content {
   display: grid;

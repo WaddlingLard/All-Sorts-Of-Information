@@ -22,17 +22,17 @@ export function populate() {
         }
 
         xhr.response.forEach(element => {
-        const option = document.createElement("option");
+            const option = document.createElement("option");
 
-        // Grabbing the id and name
-        // let id = element.article_id;
-        let id = "Article";
-        let title = element.title;
+            // Grabbing the id and name
+            // let id = element.article_id;
+            let id = "Article";
+            let title = element.article_id;
 
-        option.value = title;
-        option.innerHTML = id;
+            option.value = title;
+            option.innerHTML = id;
 
-        articles.appendChild(option);
+            articles.appendChild(option);
         });
 
     });

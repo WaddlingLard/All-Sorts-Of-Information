@@ -50,7 +50,7 @@ function loaded() {
                     // await setArticle(element.id);
                     // wait(2000).then();
                 });
-                link.innerHTML = `${element.title}`;
+                link.innerHTML = `${element.article_id}`;
 
                 // Adding link to the list item
                 listItem.appendChild(link);

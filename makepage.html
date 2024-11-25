@@ -30,7 +30,7 @@
         
           <!-- Able to go back to homepage -->
           <a href="index.html">
-            <img id="logo" src="img/www-placeholder.png">
+            <img id="logo" src="img/www-placeholder.png" alt="logo, it looks like the world wide web (WWW) earth">
           </a>
           <!-- <img id="logo" src="img/www-placeholder.png"> -->
         
@@ -118,13 +118,13 @@
           <div id="search-form">
             <!-- VV CHANGE VV -->
             <form action="index.html" method="GET">
-              <!-- <label for="search">Search: </label> -->
-              <label>Search:</label>
+              <label for="search">Search: </label>
+              <!-- <label>Search:</label> -->
 
               <!-- <input type="text" id="search" name="search"> -->
               <!-- Make a select searchable with text -->
               <!-- <select></select> -->
-              <input list="articles" name="searchbar">
+              <input id="search" list="articles" name="searchbar">
               <!-- VV This element acts like a 2-in-1 for a search and dropdown menu VV -->
               <datalist id="articles">
                 <!-- <option value="chrome">1</option> -->
@@ -155,21 +155,20 @@
         <h2>Create a new Article!</h2>
 
         <div id="content">
-          <h3>What is this website?</h3>
+          <h3>Create a Webpage:</h3>
           <p>Hello, there. This is where you can create a new webpage with your own given content. Really, you can add whatever you want, but try and make sure that the information you provide is somewhat credible. There are many topics to choose from so get creative! :) </p>
 
-          <h3>Create a Webpage:</h3>
           <div id="create-form">
 
             <hr class="spacer">
 
-            <form role="form">
+            <form action="javascript:void(0);">
 
               <table id="create-form-table">
                 <caption>Add your information! (If you need more space for the content you can drag it out)</caption>
                 <thead>
                   <tr>
-                    <th colspan="1">Field Type</th>
+                    <th colspan="1">Field Type <span class="red">*</span> required</th>
                     <th colspan="2">Information</th>
 
                     <!-- VV Used to hold the create button VV -->
@@ -180,38 +179,50 @@
                 <tbody>
                   <tr>
                     <th colspan="1">
-                      <label for="article-title">Title: </label>
+                      <label for="article-title">Title<span class="red">*</span>: </label>
                     </th>
                     <td rowspan="1">
-                      <input id="article-title" name="article-title" type="text" maxlength="20" placeholder="Ex: Triceratops">
+                      <input required id="article-title" name="article-title" type="text" maxlength="20" placeholder="Ex: Triceratops">
                     </td>
                   </tr>
                   <tr>
                     <th colspan="1">
-                      <label for="article-content">Content: </label>
+                      <label for="article-content">Content<span class="red">*</span>: </label>
                     </th>
                     <td rowspan="1">
-                      <textarea id="article-content" name="article-content" rows="10" cols="25" placeholder="Ex: Triceratops are a species of dinosaurs which are herbivores. They love that green grass."></textarea>
+                      <textarea required id="article-content" name="article-content" rows="10" cols="25" placeholder="Ex: Triceratops are a species of dinosaurs which are herbivores. They love that green grass."></textarea>
                     </td>
                   </tr>
                   <tr>
                     <th colspan="1">
                       <label for="article-image">Cover Image: </label>
                     </th>
-                    <td>
+                    <td rowspan="1">
                       <!-- VV ONLY ACCEPT CERTAIN IMAGES (otherwise image/*) VV -->
                       <input type="file" id="article-image" name="article-image" accept=".jpg, .png, .gif">
                     </td>
                   </tr>
                   <tr>
+                    <th colspan="1">
+                      <label for="attributes">Attributes: (.json)</label>
+                    </th>
+                    <th rowspan="1">
+                      <input type="file" id="attributes" name="attributes" accept=".json">
+                    </th>
+                  </tr>
+                  <tr>
                     <th colspan="3">
-                      <button type="submit">Send That John</button>
+                      <button id="article-submit" type="submit">Send That John</button>
                     </th>
                     <!-- <th colspan="row"></th> -->
                   </tr>
+                  <tr>
+                    <th colspan="3">
+                      <p id="posted-message"></p>
+                    </th>
+                  </tr>
                 </tbody>
               </table>
-
             </form>
 
             <hr class="spacer">
@@ -253,7 +264,6 @@
           <h3>About Us</h3>
           <p>
             <a class="link" href="#">About Us</a>
-    
           </p>
         </div>
       </div>
@@ -263,53 +273,60 @@
 
     </footer>
 
-    <!-- <script>
+    <script>
 
-      let articles = document.querySelector("#articles");
-      window.onload = loaded;
-
+      //Figure out how to populate list with this
       const articleAPIRoute = "https://06hoz1o347.execute-api.us-east-2.amazonaws.com/article";
 
-      function loaded() {
+      let item = document.querySelector("#article-submit").onclick = function () {
+
+        let title = document.querySelector("#article-title").value;
+        let content = document.querySelector("#article-content").value;
+        let image = document.querySelector("#article-image").value;
+        let attributes = document.querySelector("#attributes").value;
+        let xhr;
+
+        if (title && content) {
+          xhr = new XMLHttpRequest();
+        }
 
         try {
 
-          let xhr = new XMLHttpRequest();
-          xhr.responseType = "json";
+          xhr.open("PUT", "https://06hoz1o347.execute-api.us-east-2.amazonaws.com/article");
+          xhr.setRequestHeader("Content-Type", "application/json");
 
-          xhr.addEventListener("load", function() {
-            console.log("Populating list with elements");
+           // Figure out how to do this segment
+          if (image || attributes) {
 
-            if (xhr.status === 200) {
-              articles.innerHTML = "";
+            if (image) {
+
             }
 
-            xhr.response.forEach(element => {
-              const option = document.createElement("option");
+            if (attributes) {
 
-              // Grabbing the id and name
-              let id = element.article_id;
-              let title = element.title;
+            }
 
-              option.value = title;
-              option.innerHTML = id;
+          } else {
+            xhr.send(JSON.stringify({
+              "title": title,
+              "content": content,
+            }));
+          }
 
-              articles.appendChild(option);
-            });
-
-          });
-
-          xhr.open("GET", articleAPIRoute);
-
-          xhr.send();
+          console.log(`Posted ${title}!`);
 
         } catch (error) {
-          console.error(`XHR error code ${xhr.status}`);
-        }
 
+          if (xhr) {
+            console.error(`XHR error code: ${xhr.status}`);
+          } else { 
+            console.error("Non XHR error (Likely missing input)");
+          }
+
+        }
       }
 
-    </script> -->
+    </script>
     
   </body>
 
