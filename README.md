@@ -54,3 +54,4 @@ About Us/Contact
 
 ## Any Resources
 https://stackoverflow.com/questions/18309059/drop-down-menu-text-field-in-one
+https://imagekit.io/blog/how-to-upload-files-in-html/

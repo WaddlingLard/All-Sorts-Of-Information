@@ -201,6 +201,27 @@ h2 {
   /* transition-duration: .5s; */
 }
 
+#create-form {
+  text-align: center;
+  display: flex;
+  /* text-align: right; */
+  /* align-items: center; */
+  padding: 10px 0px;
+  font-size: 1.2em;
+}
+
+#create-form-table {
+  /* text-align: center; */
+  /* align-items: center; */
+  border: 1px black solid;
+  padding: 10px;
+  border-spacing: 10px; 
+}
+
+/* #article-content {
+  display: flex;
+} */
+
 /* #add-page a::hover {
   background-color:
 } */
