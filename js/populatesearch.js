@@ -25,7 +25,8 @@ export function populate() {
         const option = document.createElement("option");
 
         // Grabbing the id and name
-        let id = element.article_id;
+        // let id = element.article_id;
+        let id = "Article";
         let title = element.title;
 
         option.value = title;
