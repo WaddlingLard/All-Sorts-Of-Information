@@ -10,6 +10,7 @@
     <meta name="author" content="BrianWu">
     <link rel="stylesheet" href="css/style.css">
     <script type="module" src="js/main.js"></script>
+    <script type="module" src="js/article.js"></script>
 
   </head>
 
@@ -26,7 +27,7 @@
         
         <div id="header-left-col">
         
-          <a href="#">
+          <a href="index.html">
             <img id="logo" src="img/www-placeholder.png">
           </a>
           <!-- <img id="logo" src="img/www-placeholder.png"> -->
@@ -148,8 +149,10 @@
 
         <div id="content">
           <h3>Links</h3>
-          
-          <!-- Add content from the topics table -->
+          <ul id="link-list">
+            <!-- Add content from the topics table -->
+
+          </ul>
         </div>
       </article>
 
@@ -193,30 +196,54 @@
       <!-- <hr class="spacer"> -->
       <hr class="flex-spacer">
 
-      <script>
+      <!-- <script>
+
+        window.onload = loaded;
         
+        const links = document.querySelector("#link-list");
+        // console.log("Loading Articles!");
+
+        // When the page is loaded, there will be a request that will grab all of the articles
         function loaded() {
 
-          const linkAPIRoute = "";
-
-
-          let xhr = new XMLHttpRequest();
+          console.log("Loading Articles!");
+          const linkAPIRoute = "https://06hoz1o347.execute-api.us-east-2.amazonaws.com/items";
 
           try {
-            xhr.open("GET", "linkAPIRoute");
-            xhr.responseType('json');
+
+            let xhr = new XMLHttpRequest();
+            // console.log("Created XHR Request");
+
+            xhr.responseType = "json";
 
             xhr.addEventListener("load", function() {
 
-              // if (xhr.status === 200) {
-                
-              // }
+              console.log("Loaded!");
+              // Making sure the body is clean
+              if (xhr.status === 200) { 
+                links.innerHTML = "";
+              }
 
               xhr.response.forEach(element => {
-                
+                const listItem = document.createElement("li");
+                const link = document.createElement("a");
+
+                link.href = `article.html/${element.id}`;
+                setArticle(`${element.id}`);
+                link.innerHTML = `${element.price}`;
+
+                // Adding link to the list item
+                listItem.appendChild(link);
+
+                // Adding the list item to the list
+                links.appendChild(listItem);
               });
 
             });
+
+            xhr.open("GET", linkAPIRoute);
+            // Send request
+            xhr.send();
 
           } catch (error) {
             console.error(`XHR error code ${xhr.status}`);
@@ -225,7 +252,7 @@
         }
 
 
-      </script>
+      </script> -->
 
       
     </footer>
