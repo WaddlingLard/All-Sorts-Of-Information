@@ -275,10 +275,16 @@
 
     <script>
 
+      // A nice method used to create artificial delay similar to Thread.sleep() in Java
+      function wait(milliseconds) {
+        return new Promise(resolve => setTimeout(resolve, milliseconds));
+      }
+
       //Figure out how to populate list with this
       const articleAPIRoute = "https://06hoz1o347.execute-api.us-east-2.amazonaws.com/article";
+      const articlePosted = document.querySelector("#posted-message");
 
-      let item = document.querySelector("#article-submit").onclick = function () {
+      let item = document.querySelector("#article-submit").onclick = async function () {
 
         let title = document.querySelector("#article-title").value;
         let content = document.querySelector("#article-content").value;
@@ -295,7 +301,7 @@
           xhr.open("PUT", "https://06hoz1o347.execute-api.us-east-2.amazonaws.com/article");
           xhr.setRequestHeader("Content-Type", "application/json");
 
-           // Figure out how to do this segment
+            // Figure out how to do this segment
           if (image || attributes) {
 
             if (image) {
@@ -307,13 +313,14 @@
             }
 
           } else {
-            xhr.send(JSON.stringify({
+            await xhr.send(JSON.stringify({
               "title": title,
               "content": content,
             }));
           }
 
-          console.log(`Posted ${title}!`);
+          // console.log(`Posted ${title}!`);
+          articlePosted.innerHTML = `Article: ${title} posted!`;
 
         } catch (error) {
 
@@ -323,7 +330,15 @@
             console.error("Non XHR error (Likely missing input)");
           }
 
+          articlePosted.innerHTML = `An error has occured! (Check Console)`;
+
         }
+        
+        // Clearing the message after 2 seconds
+        await wait(2000).then( () => {
+          articlePosted.innerHTML = "";
+        });
+
       }
 
     </script>
