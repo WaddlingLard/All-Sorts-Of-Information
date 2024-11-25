@@ -191,7 +191,8 @@ h2 {
 
 #to-do {
   /* background-image: url("/img/Paper\ 7.jpg"); */
-  background-color: beige;
+  background-color: #FFFF99;
+  padding: 5px;
 }
 
 #add-page {
