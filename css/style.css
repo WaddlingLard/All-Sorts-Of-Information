@@ -189,6 +189,11 @@ h2 {
   /* padding: 0px 250px 0px 250px; */
 }
 
+#to-do {
+  /* background-image: url("/img/Paper\ 7.jpg"); */
+  background-color: beige;
+}
+
 #add-page {
   text-align: center;
   padding: 10px 0px;

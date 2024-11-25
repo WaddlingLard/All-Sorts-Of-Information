@@ -16,6 +16,10 @@ function loaded() {
 
     console.log("Loading Articles!");
     const articleAPIRoute = "https://06hoz1o347.execute-api.us-east-2.amazonaws.com/article";
+    const linksText = document.querySelector("h3");
+
+    // If it takes time to load the list
+    linksText.innerHTML += " (Loading)";
 
     try {
 
@@ -24,7 +28,7 @@ function loaded() {
 
         xhr.responseType = "json";
 
-        xhr.addEventListener("load", function() {
+        xhr.addEventListener("load", async function() {
 
             console.log("Loaded!");
             // Making sure the body is clean
@@ -32,7 +36,7 @@ function loaded() {
                 links.innerHTML = "";
             }
 
-            xhr.response.forEach(element => {
+            await xhr.response.forEach(element => {
                 const listItem = document.createElement("li");
                 const link = document.createElement("a");
 
@@ -50,7 +54,7 @@ function loaded() {
                     // await setArticle(element.id);
                     // wait(2000).then();
                 });
-                link.innerHTML = `${element.article_id}`;
+                link.innerHTML = `${id}`;
 
                 // Adding link to the list item
                 listItem.appendChild(link);
@@ -68,6 +72,8 @@ function loaded() {
     } catch (error) {
         console.error(`XHR error code ${xhr.status}`);
     }
+
+    linksText.innerHTML = "Articles";
 
     // Populating list from the populatesearch.js module
     populate();
