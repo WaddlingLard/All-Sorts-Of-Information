@@ -9,7 +9,10 @@
     
     <meta name="author" content="BrianWu">
     <link rel="stylesheet" href="css/style.css">
-    <script type="module" src="js/main.js"></script>
+
+    <!-- <script type="module" src="js/main.js"></script> -->
+
+    <script type="module" src="js/populatesearch.js"></script>    
     <script type="module" src="js/article.js"></script>
 
   </head>
@@ -116,12 +119,17 @@
           <div id="search-form">
             <!-- VV CHANGE VV -->
             <form action="index.html" method="GET">
-              <label for="search">Search: </label>
+              <!-- <label for="search">Search: </label> -->
+              <label>Search:</label>
 
-
-              <input type="text" id="search" name="search">
+              <!-- <input type="text" id="search" name="search"> -->
               <!-- Make a select searchable with text -->
-              <select></select>
+              <!-- <select></select> -->
+
+              <input list="articles" name="searchbar">
+              <datalist id="articles">
+
+              </datalist>
 
 
               <button type="submit">Look For</button>
@@ -135,8 +143,6 @@
       <!-- <hr class="flex-spacer"> -->
       
     </div>
-
-
 
     <hr class="divider">
 

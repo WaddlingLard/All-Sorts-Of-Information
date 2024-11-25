@@ -1,5 +1,6 @@
 // Importing function
 import { setArticle } from "./main.js";
+import { populate } from "./populatesearch.js";
 
 window.onload = loaded;
         
@@ -67,5 +68,8 @@ function loaded() {
     } catch (error) {
         console.error(`XHR error code ${xhr.status}`);
     }
+
+    // Populating list from the populatesearch.js module
+    populate();
 
 }
