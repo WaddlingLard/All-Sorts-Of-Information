@@ -119,20 +119,14 @@
           <div id="search-form">
             <!-- VV CHANGE VV -->
             <form action="index.html" method="GET">
-              <!-- <label for="search">Search: </label> -->
-              <label>Search:</label>
+              <label for="search-bar">Search: </label>
 
-              <!-- <input type="text" id="search" name="search"> -->
-              <!-- Make a select searchable with text -->
-              <!-- <select></select> -->
-
-              <input list="articles" name="searchbar">
+              <input id="search-bar" list="articles" name="search-bar">
               <datalist id="articles">
-
+                <!-- Populate list -->
               </datalist>
 
-
-              <button type="submit">Look For</button>
+              <button id="search-button" type="submit">Look For</button>
             </form>
           </div>
 

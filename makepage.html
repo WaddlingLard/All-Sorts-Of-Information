@@ -118,20 +118,14 @@
           <div id="search-form">
             <!-- VV CHANGE VV -->
             <form action="index.html" method="GET">
-              <label for="search">Search: </label>
-              <!-- <label>Search:</label> -->
+              <label for="search-bar">Search: </label>
 
-              <!-- <input type="text" id="search" name="search"> -->
-              <!-- Make a select searchable with text -->
-              <!-- <select></select> -->
-              <input id="search" list="articles" name="searchbar">
-              <!-- VV This element acts like a 2-in-1 for a search and dropdown menu VV -->
+              <input id="search-bar" list="articles" name="search-bar">
               <datalist id="articles">
-                <!-- <option value="chrome">1</option> -->
-
+                <!-- Populate list -->
               </datalist>
 
-              <button type="submit">Look For</button>
+              <button id="search-button" type="submit">Look For</button>
             </form>
           </div>
 

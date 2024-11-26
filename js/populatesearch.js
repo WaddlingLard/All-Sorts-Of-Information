@@ -5,13 +5,35 @@
 let articles = document.querySelector("#articles");
 window.onload = populate;
 
+const searchButton = document.querySelector("#search-button");
+let searchValue = document.querySelector("#search-bar");
+let searchForm = document.querySelector("#search-form form") 
+
+// console.log(searchValue);
+
+searchValue.addEventListener("change", () => {
+    if (searchValue.value == "") {
+        searchForm.action = "javascript:void(0);";
+    } else {
+        searchForm.action = "/article.html";
+    }
+});
+
+searchButton.addEventListener("click", async function () {
+    console.log(`Changing article to ${searchValue.value}`);
+    await sessionStorage.setItem("pageID", searchValue.value);
+});
+
 const articleAPIRoute = "https://06hoz1o347.execute-api.us-east-2.amazonaws.com/article";
 
 export function populate() {
 
+    let xhr = new XMLHttpRequest();
+
+
     try {
 
-    let xhr = new XMLHttpRequest();
+    // let xhr = new XMLHttpRequest();
     xhr.responseType = "json";
 
     xhr.addEventListener("load", function() {

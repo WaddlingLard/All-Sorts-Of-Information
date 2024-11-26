@@ -22,30 +22,45 @@ function loaded() {
 
             console.log(xhr);
 
-            if (xhr.status === 200) {
-                // articleContent.innerHTML = "";
-                // articleTitle.innerHTML = "";
-            }
-            console.log("Loaded article!");
+            // Processing if there is an item returned
+            if (xhr.response) {
 
-            let body = xhr.response;
+                if (xhr.status === 200) {
+                    // articleContent.innerHTML = "";
+                    // articleTitle.innerHTML = "";
+                }
+                console.log("Loaded article!");
+    
+                let body = xhr.response;
+    
+                // Add image and attribute integration
+    
+                let text = document.createElement("p");
+                text.innerHTML = body.content;
+    
+                articleTitle.innerHTML = body.article_id;
+                // articleContent.innerHTML = body.content;
+                articleContent.appendChild(text);
+    
+                if (body.image) {
+                    // Setting the source to the cover image;
+                    // articleImage.src = `url(${body.image})` 
+                    getImage(body.image);
+                } else {
+                    articleImage.src = `/img/placeholder.jpg`;
+                }
 
-            // Add image and attribute integration
-
-            let text = document.createElement("p");
-            text.innerHTML = body.content;
-
-            articleTitle.innerHTML = body.article_id;
-            // articleContent.innerHTML = body.content;
-            articleContent.appendChild(text);
-
-            if (body.image) {
-                // Setting the source to the cover image;
-                // articleImage.src = `url(${body.image})` 
-                getImage(body.image);
+            // 404
             } else {
-                articleImage.src = `/img/placeholder.jpg`;
+
+                let text = document.createElement("p");
+                text.innerHTML = "Content Not Found! How did you even get here? :)";
+
+                articleTitle.innerHTML = "404";
+                articleContent.appendChild(text);
+
             }
+
 
         });
 
