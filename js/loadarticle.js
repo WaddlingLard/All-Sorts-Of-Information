@@ -44,8 +44,7 @@ function loaded() {
     
                 if (body.image) {
                     // Setting the source to the cover image;
-                    // articleImage.src = `url(${body.image})` 
-                    getImage(body.image);
+                    articleImage.src = `${body.image}`;
                 } else {
                     articleImage.src = `/img/placeholder.jpg`;
                 }
@@ -71,10 +70,6 @@ function loaded() {
 
     } catch (error) {
         console.error(`XHR error code ${xhr.status}`);
-    }
-
-    async function getImage(src) {
-        const image = await fetch(src);
     }
 
     populate();
