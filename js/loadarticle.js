@@ -19,6 +19,8 @@ function loaded() {
 
         xhr.addEventListener("load", async function() {
 
+            console.log(xhr);
+
             if (xhr.status === 200) {
                 articleContent.innerHTML = "";
                 articleTitle.innerHTML = "";
@@ -35,6 +37,7 @@ function loaded() {
         });
 
         xhr.open("GET", `${articleAPIRoute}/${pageID}`);
+        // xhr.open("GET", `${articleAPIRoute}/Alligator`);
 
         xhr.send();
 

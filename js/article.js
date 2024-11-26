@@ -42,6 +42,7 @@ function loaded() {
 
                 // Grabbing the id
                 let id = element.article_id;
+                // let id = element.id;
                 // console.log(id);
 
                 link.href = `article.html`;

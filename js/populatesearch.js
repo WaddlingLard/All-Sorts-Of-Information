@@ -28,6 +28,7 @@ export function populate() {
             // let id = element.article_id;
             let id = "Article";
             let title = element.article_id;
+            // let title = element.id;
 
             option.value = title;
             option.innerHTML = id;
