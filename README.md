@@ -56,3 +56,4 @@ About Us/Contact
 * https://stackoverflow.com/questions/18309059/drop-down-menu-text-field-in-one
 * https://imagekit.io/blog/how-to-upload-files-in-html/
 * https://stackoverflow.com/questions/5697605/limit-the-size-of-a-file-upload-html-input-element
+* https://dev.to/sbodi10/download-images-using-javascript-51a9

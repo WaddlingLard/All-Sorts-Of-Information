@@ -23,8 +23,8 @@ function loaded() {
             console.log(xhr);
 
             if (xhr.status === 200) {
-                articleContent.innerHTML = "";
-                articleTitle.innerHTML = "";
+                // articleContent.innerHTML = "";
+                // articleTitle.innerHTML = "";
             }
             console.log("Loaded article!");
 
@@ -44,7 +44,7 @@ function loaded() {
                 // articleImage.src = `url(${body.image})` 
                 getImage(body.image);
             } else {
-                articleImage.src = `url("/img/placeholder.jpg")`;
+                articleImage.src = `/img/placeholder.jpg`;
             }
 
         });
