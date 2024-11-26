@@ -157,6 +157,7 @@
         <div id="content">
           <h3>Create a Webpage:</h3>
           <p>Hello, there. This is where you can create a new webpage with your own given content. Really, you can add whatever you want, but try and make sure that the information you provide is somewhat credible. There are many topics to choose from so get creative! :) </p>
+          <p>NOTE: You can use text tags for formatting the text to make it more fancy! Think of these textboxes as areas where you can make your content have more <em>flair</em>.</p>
 
           <div id="create-form">
 
@@ -309,7 +310,15 @@
         let attributes = document.querySelector("#attributes").value;
         let xhr;
 
+        // Removing script tags
+        let safeTitle = title.replace(/<script>/g, "");
+        let safeContent = content.replace(/<script>/g, "");
+
         // console.log(image);
+
+        // Removing Autosave
+        sessionStorage.removeItem("titleAutosave");
+        sessionStorage.removeItem("contentAutosave");
 
         if (title && content) {
           xhr = new XMLHttpRequest();
@@ -344,8 +353,8 @@
 
           } else {
             await xhr.send(JSON.stringify({
-              "title": title,
-              "content": content,
+              "title": safeTitle,
+              "content": safeContent,
             }));
           }
 
@@ -366,7 +375,6 @@
           }
 
           articlePosted.innerHTML = `An error has occured! (Check Console)`;
-
         }
         
         // Clearing the message after 2 seconds
