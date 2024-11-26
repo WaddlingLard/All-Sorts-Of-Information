@@ -194,12 +194,17 @@
                     </td>
                   </tr>
                   <tr>
+
+                    <!-- THIS SECTION NEEDS TO BE CHANGED LATER, CURRENTLY DOING A DIFFERENT METHOD AT STORING IMAGES -->
+
                     <th colspan="1">
+                      <!-- <label for="article-image">Cover Image (<400KB): </label> -->
                       <label for="article-image">Cover Image: </label>
                     </th>
                     <td rowspan="1">
                       <!-- VV ONLY ACCEPT CERTAIN IMAGES (otherwise image/*) VV -->
-                      <input type="file" id="article-image" name="article-image" accept=".jpg, .png, .gif">
+                      <!-- <input type="file" id="article-image" name="article-image" accept=".jpg, .png, .gif"> -->
+                      <input type="text" id="article-image" name="article-image" placeholder="Image Link">
                     </td>
                   </tr>
                   <tr>
@@ -275,6 +280,15 @@
 
     <script>
 
+      // const file = document.querySelector("#article-image");
+
+      // file.onchange = function () {
+      //   if (this.files[0].size >= 409600) { // This is comparing the size to 400KB in binary
+      //     alert("File Too Large! (Less than 400 KB!)");
+      //     this.value = "";
+      //   }
+      // }
+
       // A nice method used to create artificial delay similar to Thread.sleep() in Java
       function wait(milliseconds) {
         return new Promise(resolve => setTimeout(resolve, milliseconds));
@@ -292,6 +306,8 @@
         let attributes = document.querySelector("#attributes").value;
         let xhr;
 
+        // console.log(image);
+
         if (title && content) {
           xhr = new XMLHttpRequest();
         }
@@ -305,7 +321,13 @@
           if (image || attributes) {
 
             if (image) {
+              await xhr.send(JSON.stringify({
+                "title": title,
+                "content": content,
+                "image": image
+              }));
 
+              console.log(xhr);
             }
 
             if (attributes) {
@@ -318,6 +340,11 @@
               "content": content,
             }));
           }
+
+          // await xhr.send(JSON.stringify({
+          //   "title": title,
+          //   "content": content,
+          // }));
 
           // console.log(`Posted ${title}!`);
           articlePosted.innerHTML = `Article: ${title} posted!`;

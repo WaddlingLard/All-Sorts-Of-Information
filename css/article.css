@@ -177,6 +177,7 @@ h2 {
   border: 1px black solid;
   border-radius: 35px;
   /* padding: 25px; */
+
   padding: 0px 25px 0px 25px;
 
   /* overflow: scroll; */
@@ -184,7 +185,22 @@ h2 {
   /* overflow:auto; */
 
   text-align: left;
+  display: flex;
   /* padding: 0px 250px 0px 250px; */
+}
+
+#text-content {
+  /* display: block; */
+  flex: 2;
+}
+
+#aside-content {
+  flex: 1;
+}
+
+#cover-image {
+  width: 128px;
+  height: 128px;
 }
 
 #to-do {

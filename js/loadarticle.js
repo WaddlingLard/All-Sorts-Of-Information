@@ -10,7 +10,8 @@ function loaded() {
     console.log(`Loading ${pageID}!`);
     const articleAPIRoute = "https://06hoz1o347.execute-api.us-east-2.amazonaws.com/article";
     const articleTitle = document.querySelector("#content-title");
-    const articleContent = document.querySelector("#content");
+    const articleContent = document.querySelector("#text-content");
+    const articleImage = document.querySelector("#cover-image");
 
     try {
 
@@ -31,8 +32,20 @@ function loaded() {
 
             // Add image and attribute integration
 
+            let text = document.createElement("p");
+            text.innerHTML = body.content;
+
             articleTitle.innerHTML = body.article_id;
-            articleContent.innerHTML = body.content;
+            // articleContent.innerHTML = body.content;
+            articleContent.appendChild(text);
+
+            if (body.image) {
+                // Setting the source to the cover image;
+                // articleImage.src = `url(${body.image})` 
+                getImage(body.image);
+            } else {
+                articleImage.src = `url("/img/placeholder.jpg")`;
+            }
 
         });
 
@@ -43,6 +56,10 @@ function loaded() {
 
     } catch (error) {
         console.error(`XHR error code ${xhr.status}`);
+    }
+
+    async function getImage(src) {
+        const image = await fetch(src);
     }
 
     populate();
