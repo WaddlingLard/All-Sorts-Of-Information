@@ -276,10 +276,10 @@
     <script>
 
       const file = document.querySelector("#article-image");
-      let base64 = "";
+      var base64 = "";
 
       // Processes image into base64 which will be stored into the DB
-      file.onchange = function () {
+      file.onchange = async function () {
         if (this.files[0].size >= 409600) { // This is comparing the size to 400KB in binary
           alert("File Too Large! (Less than 400 KB!)");
           this.value = "";
@@ -291,11 +291,20 @@
             base64 = e.target.result;
 
             sessionStorage.setItem("image", base64);
-            console.log(base64);
           };
 
-          fileReader.readAsDataURL(data);
-        }
+          await fileReader.readAsDataURL(data);
+
+          const conversion = sessionStorage.getItem("image");
+          // console.log(conversion)
+
+          // Base64 of the image also cannot be larger tha 400 KB
+          if (conversion.length >= 409600) {
+            alert("File Conversion Too large! (Less than 400 KB!)");
+            this.value = "";
+          }
+        }        
+
 
         // I believe storing the value in the session is good enough
         // sessionStorage.setItem("image", base64);
