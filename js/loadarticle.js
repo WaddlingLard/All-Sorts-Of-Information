@@ -9,7 +9,7 @@ function loaded() {
     // console.log(pageID);
     console.log(`Loading ${pageID}!`);
     const articleAPIRoute = "https://06hoz1o347.execute-api.us-east-2.amazonaws.com/article";
-    const articleTitle = document.querySelector("#content-title");
+    const articleTitle = document.querySelectorAll(".content-title");
     const articleContent = document.querySelector("#text-content");
     const articleImage = document.querySelector("#cover-image");
 
@@ -38,7 +38,11 @@ function loaded() {
                 let text = document.createElement("p");
                 text.innerHTML = body.content;
     
-                articleTitle.innerHTML = body.article_id;
+                articleTitle.forEach(element => {
+                    element.innerHTML = body.article_id;
+                });
+                
+                // articleTitle.innerHTML = body.article_id;
                 // articleContent.innerHTML = body.content;
                 articleContent.appendChild(text);
     

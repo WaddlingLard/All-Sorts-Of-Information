@@ -196,11 +196,18 @@ h2 {
 
 #aside-content {
   flex: 1;
+  /* align-items: center; */
+  /* display: flex; */
+  justify-content: space-between;
+  text-align: center;
 }
 
 #cover-image {
-  width: 128px;
-  height: 128px;
+  /* width: 128px;
+  height: 128px; */
+  width: 256px;
+  height: 256px;
+
 }
 
 #to-do {
