@@ -73,6 +73,7 @@ function loaded() {
                     // console.log(keys);
                     // console.log(values);
 
+                    // Populating attributes with the keys and values
                     for (let i = 0; i < keys.length; i++) {
                         let row = document.createElement("tr");
 
@@ -89,8 +90,10 @@ function loaded() {
 
                         articleAttributes.appendChild(row);
                     }
-                    
+
                 }
+
+                document.querySelector("#text-content h3").innerHTML = "";
 
             // 404
             } else {

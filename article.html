@@ -149,7 +149,7 @@
         <div id="content">
 
           <div id="text-content">
-            <h3>Content</h3>
+            <h3>Loading</h3>
 
           </div>
 
@@ -159,12 +159,12 @@
               <img id="cover-image" alt="The article's cover image" src="">
               
               <table id="attributes-table">
-                <!-- <caption>Attributes</caption> -->
+                <caption>Characteristics</caption>
                 <!-- ADD ATTRIBUTES HERE -->
                 <thead>
                   <tr>
                     <th colspan="1">Attributes</th>
-                    <th colspan="1"></th>
+                    <th colspan="1">Description</th>
                   </tr>
                 </thead>
 
@@ -178,6 +178,88 @@
             </p>
             <!-- <img id="cover-image" alt="The article's cover image" src=""> -->
           </div>
+
+        </div>
+
+        <div id="posts">
+
+          <h3>Posts</h3>
+          <h4>Create a Post!</h4>
+
+          <form id="post-form" action="javascript:action(0);">
+
+            <div id="create-posts">
+
+            <!-- <form id="post-form" action="javascript:action(0);"> -->
+              <table id="posts-left">
+                <!-- <caption>Add your information.</caption> -->
+                <thead>
+                  <tr>
+                    <th colspan="1"></th>
+                    <th colspan="1"></th>
+                    <!-- <th colspan="1"></th> -->
+                    <!-- <th colspan="1"></th> -->
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th colspan="1">
+                      <label for="post-title">Title: </label>
+                    </th>
+                    <td rowspan="1">
+                      <input id="post-title" name="post-title" type="text" placeholder="Ex: What is your favorite....">
+                    </td>
+                    <!-- <th colspan="1">
+                      <label for="post-image">Post Image (&lt;400 KB): </label>
+                    </th>
+                    <td rowspan="1">
+                      <input id="post-image" name="post-image" type="file">
+                    </td> -->
+                  </tr>
+                  <tr>
+                    <th colspan="1">
+                      <label for="post-content">Content: </label>
+                    </th>
+                    <td rowspan="1">
+                      <textarea rows="5" cols="40" id="post-content" name="post-content"></textarea>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <table id="posts-right">
+                <thead>
+                  <tr>
+                    <th colspan="1"></th>
+                    <th colspan="1"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th colspan="1">
+                      <label for="post-image">Image (&lt;400 KB): </label>
+                    </th>
+                    <td rowspan="1">
+                      <input id="post-image" name="post-image" type="file">
+                    </td>
+                  </tr>
+                  <tr>
+                    <!-- <th colspan="1"></th> -->
+                    <td rowspan="1">
+                      <button type="submit" id="post-button">Post!</button>
+                    </td>
+                    <!-- VV Change when button is pressed! VV -->
+                    <td rowspan="1" id="posted-message">Post has been sent!</td>
+                  </tr>
+                </tbody>
+              </table>
+              
+            <!-- </form> -->
+
+            </div>
+
+          </form>
+
 
         </div>
 
