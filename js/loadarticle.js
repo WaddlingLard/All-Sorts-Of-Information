@@ -13,6 +13,8 @@ function loaded() {
     const articleContent = document.querySelector("#text-content");
     const articleImage = document.querySelector("#cover-image");
 
+    const articleAttributes = document.querySelector("#attributes-body");
+
     try {
 
         let xhr = new XMLHttpRequest();
@@ -41,7 +43,7 @@ function loaded() {
                 articleTitle.forEach(element => {
                     element.innerHTML = body.article_id;
                 });
-                
+
                 // articleTitle.innerHTML = body.article_id;
                 // articleContent.innerHTML = body.content;
                 articleContent.appendChild(text);
@@ -51,6 +53,43 @@ function loaded() {
                     articleImage.src = `${body.image}`;
                 } else {
                     articleImage.src = `/img/placeholder.jpg`;
+                }
+
+                if (body.attributes) {
+                    let attributes = body.attributes;
+
+                    const list = attributes.split(",");
+                    
+                    console.log(list);
+
+                    let keys = [];
+                    let values = [];
+
+                    for (let i = 0; i < list.length; i+=2) {
+                        keys.push(list[i]);
+                        values.push(list[i+1]);
+                    }
+
+                    // console.log(keys);
+                    // console.log(values);
+
+                    for (let i = 0; i < keys.length; i++) {
+                        let row = document.createElement("tr");
+
+                        let key = keys[i];
+                        let value = values[i];
+
+                        let firstCol = document.createElement("th");
+                        let secondCol = document.createElement("td");
+                        firstCol.innerHTML = key;
+                        secondCol.innerHTML = value;
+
+                        row.appendChild(firstCol);
+                        row.appendChild(secondCol);
+
+                        articleAttributes.appendChild(row);
+                    }
+                    
                 }
 
             // 404

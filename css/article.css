@@ -189,6 +189,10 @@ h2 {
   /* padding: 0px 250px 0px 250px; */
 }
 
+#cover-image {
+  border: 2px solid black;
+}
+
 #text-content {
   /* display: block; */
   flex: 2;
@@ -196,10 +200,24 @@ h2 {
 
 #aside-content {
   flex: 1;
+  font-size: 1.2em;
   /* align-items: center; */
   /* display: flex; */
-  justify-content: space-between;
+  display: grid;
+  grid-template-rows: 3;
+  justify-content: center;
   text-align: center;
+}
+#attributes-table tr:nth-child(even) {
+  
+}
+
+#attributes-table tr:nth-child(even) {
+  background-color: bisque;
+}
+
+#attributes-table tr:nth-child(odd) {
+  background-color: aquamarine;
 }
 
 #cover-image {
