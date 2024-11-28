@@ -16,7 +16,7 @@ function loaded() {
 
     console.log("Loading Articles!");
     const articleAPIRoute = "https://06hoz1o347.execute-api.us-east-2.amazonaws.com/article";
-    const linksText = document.querySelector("h3");
+    const linksText = document.querySelector("#content-header");
 
     // If it takes time to load the list
     linksText.innerHTML += " (Loading)";

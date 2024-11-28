@@ -10,10 +10,8 @@
     <meta name="author" content="BrianWu">
     <link rel="stylesheet" href="css/style.css">
 
-    <!-- <script type="module" src="js/main.js"></script> -->
-    <!-- <script type="module" src="js/populatesearch.js"></script>     -->
+    <script type="module" src="js/post.js"></script>
 
-    <script type="module" src="js/article.js"></script>
 
   </head>
 
@@ -24,16 +22,12 @@
       <div id="top">
 
         <hr class="spacer">
-
-
-        <!-- <img id="logo" src="img/placeholder.jpg"> -->
         
         <div id="header-left-col">
         
           <a href="index.html">
             <img id="logo" src="img/www-placeholder.png" alt="The logo of the website.">
           </a>
-          <!-- <img id="logo" src="img/www-placeholder.png"> -->
         
         </div>
         
@@ -55,16 +49,11 @@
                 <caption>Login Window</caption>
                 <thead>
                   <tr>
-                    <!-- <th colspan="col">Info</th> -->
                     <th colspan="2"></th>
-                    <!-- <th colspan="col"></th> -->
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <!-- <th colspan="col"> -->
-                      <!-- <label for="username">Username: </label> -->
-                    <!-- </th> -->
                     <th colspan="1">
                       <input type="text" name="username" id="username" placeholder="Username">
                     </th>
@@ -73,9 +62,6 @@
                     </td>
                   </tr>
                   <tr>
-                    <!-- <th colspan="col"> -->
-                      <!-- <label for="password">Password: </label> -->
-                    <!-- </th> -->
                     <th colspan="1">
                       <input type="password" name="password" id="password" placeholder="Password">
                     </td>
@@ -105,25 +91,24 @@
 
     <div id="navigation">
 
-      <!-- <hr class="flex-spacer"> -->
 
       <nav>
 
         <div id="nav-choices">
 
           <a class="link" href="topics.html">Topics</a>
-          <a class="link" href="discussions.html">Discussions</a>
+          <a class="link" href="#">Discussions</a>
           <a class="link" href="#">About Us</a>
           <a class="link" href="#">Users? (W.I.P)</a>
 
           <div id="search-form">
-            <!-- VV CHANGE VV -->
+
             <form action="index.html" method="GET">
               <label for="search-bar">Search: </label>
 
               <input id="search-bar" list="articles" name="search-bar">
               <datalist id="articles">
-                <!-- Populate list -->
+
               </datalist>
 
               <button id="search-button" type="submit">Look For</button>
@@ -133,10 +118,10 @@
         </div>
 
       </nav>
-
-      <!-- <hr class="flex-spacer"> -->
       
     </div>
+
+
 
     <hr class="divider">
 
@@ -144,23 +129,17 @@
       <hr class="spacer">
 
       <article>
-        <!-- <h2>Hello.......</h2> -->
-        <h2>Topics</h2>
+        <h2>Posts</h2>
 
         <div id="content">
-          <h3 id="content-header">Articles (Loading)</h3>
-          <ul id="link-list">
-            <!-- Add content from the topics table -->
 
-          </ul>
-          <p>
-            Don't see something you like? If so, you can add your own article to the website so you and others can post/interact on that topic.
-          </p>
+            <h3 id="content-header">Discussion Board (Loading)</h3>
+            <p></p>
 
-          <div id="add-page">
-            <a href="makepage.html">Click here to add a <strong><em>new</em></strong> page!</a>
+            <div id="posts">
+
           </div>
-          
+
         </div>
       </article>
 
@@ -171,7 +150,6 @@
 
     <footer>
 
-      <!-- <hr class="spacer"> -->
       <hr class="flex-spacer">
 
       <div id="footer-content">
@@ -201,68 +179,8 @@
         </div>
       </div>
 
-      <!-- <hr class="spacer"> -->
       <hr class="flex-spacer">
 
-      <!-- <script>
-
-        window.onload = loaded;
-        
-        const links = document.querySelector("#link-list");
-        // console.log("Loading Articles!");
-
-        // When the page is loaded, there will be a request that will grab all of the articles
-        function loaded() {
-
-          console.log("Loading Articles!");
-          const linkAPIRoute = "https://06hoz1o347.execute-api.us-east-2.amazonaws.com/items";
-
-          try {
-
-            let xhr = new XMLHttpRequest();
-            // console.log("Created XHR Request");
-
-            xhr.responseType = "json";
-
-            xhr.addEventListener("load", function() {
-
-              console.log("Loaded!");
-              // Making sure the body is clean
-              if (xhr.status === 200) { 
-                links.innerHTML = "";
-              }
-
-              xhr.response.forEach(element => {
-                const listItem = document.createElement("li");
-                const link = document.createElement("a");
-
-                link.href = `article.html/${element.id}`;
-                setArticle(`${element.id}`);
-                link.innerHTML = `${element.price}`;
-
-                // Adding link to the list item
-                listItem.appendChild(link);
-
-                // Adding the list item to the list
-                links.appendChild(listItem);
-              });
-
-            });
-
-            xhr.open("GET", linkAPIRoute);
-            // Send request
-            xhr.send();
-
-          } catch (error) {
-            console.error(`XHR error code ${xhr.status}`);
-          }
-
-        }
-
-
-      </script> -->
-
-      
     </footer>
     
   </body>
