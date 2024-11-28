@@ -275,14 +275,14 @@
 
     <script>
 
-      console.log("Script running!");
-      console.log("Script running!");
-      console.log("Script running!");
-      console.log("Script running!");
-      console.log("Script running!");
-      console.log("Script running!");
-      console.log("Script running!");
-      console.log("Script running!");
+      // console.log("Script running!");
+      // console.log("Script running!");
+      // console.log("Script running!");
+      // console.log("Script running!");
+      // console.log("Script running!");
+      // console.log("Script running!");
+      // console.log("Script running!");
+      // console.log("Script running!");
       const file = document.querySelector("#article-image");
       var base64 = "";
 
@@ -353,10 +353,12 @@
           await fileReader.readAsDataURL(data);
 
           let conversion = sessionStorage.getItem("image");
-          // console.log(conversion)
+          // console.log(conversion);
+
+          let text = conversion.valueOf();
 
           // Base64 of the image also cannot be larger tha 400 KB
-          if (conversion.length >= 409600) {
+          if (text.length >= 409600) {
             alert("File Conversion Too large! (Less than 400 KB!)");
             this.value = "";
           }

@@ -29,12 +29,41 @@ imageFile.onchange = async function () {
         await fileReader.readAsDataURL(data);
         let conversion = sessionStorage.getItem("image");
 
-        if (conversion.length >= 409600) {
+        let text = conversion.valueOf();
+
+        if (text.length >= 409600) {
             alert("File Conversion Too Large! (Less than 400 KB!)");
             this.value = "";
         }
     }
 }
+
+// let pageID = sessionStorage.getItem("pageID");
+
+// Autosave for posts
+let titleSave = document.querySelector("#post-title");
+let contentSave = document.querySelector("#post-content");
+
+let titleName = `${pageID}titleAutosave`;
+let contentName = `${pageID}contentAutosave`;
+
+if (sessionStorage.getItem(titleName)) {
+    titleSave.value = sessionStorage.getItem(titleName);
+}
+
+if (sessionStorage.getItem(contentName)) {
+    contentSave.value = sessionStorage.getItem(contentName);
+}
+
+titleSave.onchange = () => {
+    console.log("saved!");
+    sessionStorage.setItem(titleName, titleSave.value);
+}
+
+contentSave.onchange = () => {
+    sessionStorage.setItem(contentName, contentSave.value);
+}
+
 
 // Used for artifical wait time (like Thread.sleep())
 function wait(milliseconds) {
@@ -59,11 +88,11 @@ postButton.addEventListener("click", async () => {
     let safeContent = postContent.replace(/<script>/g,"");
 
     // Removing Autosave
-    sessionStorage.removeItem("titleAutosave");
-    sessionStorage.removeItem("contentAutosave");
+    sessionStorage.removeItem(titleName);
+    sessionStorage.removeItem(contentName);
 
     if (postTitle && postContent) {
-        console.log("XHR Initialized!");
+        // console.log("XHR Initialized!");
         xhr = new XMLHttpRequest();
 
         // Removing script tags
@@ -76,18 +105,19 @@ postButton.addEventListener("click", async () => {
         xhr.open("PUT", "https://06hoz1o347.execute-api.us-east-2.amazonaws.com/posts");
         xhr.setRequestHeader("Content-Type", "application/json");
 
-        console.log(xhr);
-
-        // await xhr.send(JSON.stringify({
-        //     "title": safeTitle,
-        //     "article_id": pageID,
-        //     "content": safeContent,
-        //     "image": postImage,
-        // }))
+        // console.log(xhr);
+        // console.log(safeTitle);
 
         await xhr.send(JSON.stringify({
             "title": safeTitle,
-        }));
+            "article_id": pageID,
+            "content": safeContent,
+            "image": postImage,
+        }))
+
+        // await xhr.send(JSON.stringify({
+        //     "title": safeTitle,
+        // }));
 
         sessionStorage.removeItem("image");
 
@@ -128,7 +158,7 @@ function loaded() {
 
         xhr.addEventListener("load", async function() {
 
-            console.log(xhr);
+            // console.log(xhr);
 
             // Processing if there is an item returned
             if (xhr.response) {
@@ -137,7 +167,7 @@ function loaded() {
                     // articleContent.innerHTML = "";
                     // articleTitle.innerHTML = "";
                 }
-                console.log("Loaded article!");
+                // console.log("Loaded article!");
     
                 let body = xhr.response;
     
