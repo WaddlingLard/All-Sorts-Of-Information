@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="css/article.css">
 
     <!-- <script type="module" src="js/main.js"></script> -->
-    <script type = "module" src="js/loadarticle.js"></script>
+    <!-- <script type = "module" src="js/loadarticle.js"></script> -->
 
   </head>
 
@@ -183,10 +183,10 @@
 
         <div id="posts">
 
-          <h3>Posts</h3>
-          <h4>Create a Post!</h4>
+          <h2>Posts</h2>
+          <h4>Create a Post! (<span class="red">*</span>required)</h4>
 
-          <form id="post-form" action="javascript:action(0);">
+          <form id="post-form" action="javascript:void(0);">
 
             <div id="create-posts">
 
@@ -204,7 +204,7 @@
                 <tbody>
                   <tr>
                     <th colspan="1">
-                      <label for="post-title">Title: </label>
+                      <label for="post-title">Title<span class="red">*</span>: </label>
                     </th>
                     <td rowspan="1">
                       <input id="post-title" name="post-title" type="text" placeholder="Ex: What is your favorite....">
@@ -218,7 +218,7 @@
                   </tr>
                   <tr>
                     <th colspan="1">
-                      <label for="post-content">Content: </label>
+                      <label for="post-content">Content<span class="red">*</span>: </label>
                     </th>
                     <td rowspan="1">
                       <textarea rows="5" cols="40" id="post-content" name="post-content"></textarea>
@@ -249,7 +249,7 @@
                       <button type="submit" id="post-button">Post!</button>
                     </td>
                     <!-- VV Change when button is pressed! VV -->
-                    <td rowspan="1" id="posted-message">Post has been sent!</td>
+                    <td rowspan="1" id="posted-message"></td>
                   </tr>
                 </tbody>
               </table>
@@ -260,7 +260,10 @@
 
           </form>
 
-
+          <div id="post-list">
+              
+          </div>
+          
         </div>
 
         
@@ -307,6 +310,38 @@
       <hr class="flex-spacer">
 
     </footer>
+    
+    <script>
+
+      let pageID = sessionStorage.getItem("pageID");
+
+      // Autosave for posts
+      let titleSave = document.querySelector("#post-title");
+      let contentSave = document.querySelector("#post-content");
+
+      let titleName = `${pageID}titleAutosave`;
+      let contentName = `${pageID}contentAutosave`;
+
+      if (sessionStorage.getItem(titleName)) {
+          titleSave.value = sessionStorage.getItem(titleName);
+      }
+
+      if (sessionStorage.getItem(contentName)) {
+          contentSave.value = sessionStorage.getItem(contentName);
+      }
+
+      titleSave.onchange = () => {
+          console.log("saved!");
+          sessionStorage.setItem(titleName, titleSave.value);
+      }
+
+      contentSave.onchange = () => {
+          sessionStorage.setItem(contentName, contentSave.value);
+      }
+
+    </script>
+
+    <script type = "module" src="js/loadarticle.js"></script>
     
   </body>
 

@@ -275,6 +275,14 @@
 
     <script>
 
+      console.log("Script running!");
+      console.log("Script running!");
+      console.log("Script running!");
+      console.log("Script running!");
+      console.log("Script running!");
+      console.log("Script running!");
+      console.log("Script running!");
+      console.log("Script running!");
       const file = document.querySelector("#article-image");
       var base64 = "";
 
@@ -283,6 +291,7 @@
 
       // Processing the data for attributes
       attributes.onchange = async function () {
+        console.log("Reading attributes file!");
         const data = this.files[0];
 
         const fileReader = new FileReader();
@@ -381,6 +390,7 @@
         // let attributes = document.querySelector("#attributes").value;
         // let attributes = JSON.stringify(sessionStorage.getItem("attributes"));
         let attributes = sessionStorage.getItem("attributes");
+        console.log(attributes);
 
         let xhr;
 
@@ -429,8 +439,8 @@
           // }
 
           await xhr.send(JSON.stringify({
-            "title": title,
-            "content": content,
+            "title": safeTitle,
+            "content": safeContent,
             "image": image,
             "attributes": attributes
           }));
@@ -457,7 +467,7 @@
           articlePosted.innerHTML = `An error has occured! (Check Console)`;
         }
         
-        // Clearing the message after 2 seconds
+        // Clearing the message after 2 secondsp
         await wait(2000).then( () => {
           articlePosted.innerHTML = "";
         });
@@ -492,7 +502,7 @@
 
     </script>
 
-    <script type="module" src="js/populatesearch.js"></script>
+    <!-- <script type="module" src="js/populatesearch.js"></script> -->
     
   </body>
 

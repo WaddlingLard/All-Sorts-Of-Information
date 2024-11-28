@@ -4,6 +4,112 @@ let pageID = sessionStorage.getItem('pageID');
 
 window.onload = loaded;
 
+let postButton = document.querySelector("#post-button");
+let imageFile = document.querySelector("#post-image");
+let base64image;
+
+imageFile.onchange = async function () {
+    
+    if (!imageFile) {
+
+    } else if (this.files[0].size >= 409600) {
+        alert("File Too Large! (Less than 400 KB!)");
+        imageFile.value = ""
+    } else {
+        const data = this.files[0];
+
+        const fileReader = new FileReader();
+        fileReader.onload = (e) => {
+            base64image = e.target.result;
+
+            sessionStorage.setItem("image", base64image);
+        }
+
+        // Converting to base64
+        await fileReader.readAsDataURL(data);
+        let conversion = sessionStorage.getItem("image");
+
+        if (conversion.length >= 409600) {
+            alert("File Conversion Too Large! (Less than 400 KB!)");
+            this.value = "";
+        }
+    }
+}
+
+// Used for artifical wait time (like Thread.sleep())
+function wait(milliseconds) {
+    return new Promise(resolve => setTimeout(resolve, milliseconds));
+}
+
+postButton.addEventListener("click", async () => {
+    
+    const postTitle = document.querySelector("#post-title").value;
+    const postContent = document.querySelector("#post-content").value;
+
+    // Handled differently
+    // const postImage = document.querySelector("#post-image").value;
+    const postImage = sessionStorage.getItem("image");
+    
+    const postMessage = document.querySelector("#posted-message");
+
+    let xhr;
+
+    // Removing script tags
+    let safeTitle = postTitle.replace(/<script>/g, "");
+    let safeContent = postContent.replace(/<script>/g,"");
+
+    // Removing Autosave
+    sessionStorage.removeItem("titleAutosave");
+    sessionStorage.removeItem("contentAutosave");
+
+    if (postTitle && postContent) {
+        console.log("XHR Initialized!");
+        xhr = new XMLHttpRequest();
+
+        // Removing script tags
+        let safeTitle = postTitle.replace(/<script>/g, "");
+        let safeContent = postContent.replace(/<script>/g,"");
+    }
+
+    try {
+        
+        xhr.open("PUT", "https://06hoz1o347.execute-api.us-east-2.amazonaws.com/posts");
+        xhr.setRequestHeader("Content-Type", "application/json");
+
+        console.log(xhr);
+
+        // await xhr.send(JSON.stringify({
+        //     "title": safeTitle,
+        //     "article_id": pageID,
+        //     "content": safeContent,
+        //     "image": postImage,
+        // }))
+
+        await xhr.send(JSON.stringify({
+            "title": safeTitle,
+        }));
+
+        sessionStorage.removeItem("image");
+
+        postMessage.innerHTML = "Posted!";
+        
+    } catch (error) {   
+        
+        if (xhr) {
+            console.error(`XHR error code ${xhr.status}`);
+        } else {
+            console.error("Non XHR error (Likely missing input)");
+        }
+        
+        postMessage.innerHTML = "An error has occured! (Check Console)";
+    }
+
+    await wait(2000).then( () => {
+        postMessage.innerHTML = "";
+    })
+
+})
+
 function loaded() {
     
     // console.log(pageID);
