@@ -3,7 +3,7 @@
  * that a user needs to quickly access
  */
 let articles = document.querySelector("#articles");
-window.onload = populate;
+window.onload = populateArticles;
 
 const searchButton = document.querySelector("#search-button");
 let searchValue = document.querySelector("#search-bar");
@@ -26,7 +26,7 @@ searchButton.addEventListener("click", async function () {
 
 const articleAPIRoute = "https://06hoz1o347.execute-api.us-east-2.amazonaws.com/article";
 
-export function populate() {
+export function populateArticles() {
 
     let xhr = new XMLHttpRequest();
 

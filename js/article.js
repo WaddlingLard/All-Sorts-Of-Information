@@ -1,6 +1,6 @@
 // Importing function
 import { setArticle } from "./main.js";
-import { populate } from "./populatesearch.js";
+import { populateArticles as populate } from "./populatesearch.js";
 
 window.onload = loaded;
         
@@ -38,6 +38,10 @@ function loaded() {
 
             await xhr.response.forEach(element => {
                 const listItem = document.createElement("li");
+
+                listItem.style.padding = "2.5px";
+                listItem.style.fontSize = "1.1em";
+
                 const link = document.createElement("a");
 
                 // Grabbing the id

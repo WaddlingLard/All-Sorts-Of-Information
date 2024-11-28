@@ -1,6 +1,7 @@
-import { populate } from "./populatesearch.js";
+import { populateArticles as populate } from "./populatesearch.js";
 
 let pageID = sessionStorage.getItem('pageID');
+const postsAPIRoute = "https://06hoz1o347.execute-api.us-east-2.amazonaws.com/posts";
 
 window.onload = loaded;
 
@@ -138,7 +139,77 @@ postButton.addEventListener("click", async () => {
         postMessage.innerHTML = "";
     })
 
+    await populatePosts();
+
 })
+
+export async function populatePosts() {
+
+    console.log("Populating article with related posts!");
+    let xhr = new XMLHttpRequest();
+
+    const postList = document.querySelector("#post-list");
+
+    try {
+
+        xhr.responseType = "json";
+
+        xhr.addEventListener("load", function() {
+            console.log("Populating list with posts");
+
+            if (xhr.status === 200) {  
+                postList.innerHTML = "";
+                let postListTitle = document.createElement("h4");
+
+                postListTitle.style.fontSize = "1.75em";
+                postListTitle.innerHTML = "Post List";
+
+                postList.appendChild(postListTitle);
+            }
+
+            xhr.response.forEach(element => { 
+
+                let article_id = element.article_id;
+
+                if (article_id === pageID) {
+                    const post = document.createElement("p");
+
+                    // Editing stylesheet
+                    post.style.fontSize = "1.25em";
+                    post.style.textAlign = "center";
+                    // post.style.color = "#00000";
+
+                    const link = document.createElement("a");
+    
+                    let id = element.post_id;
+    
+                    link.href = `discussions.html`;
+                    link.addEventListener("click", function () {
+                        sessionStorage.setItem("postID", id);
+                    })
+                    link.innerHTML = `${id}`;
+
+                    post.appendChild(link);
+
+                    postList.appendChild(post);
+                } 
+
+            });
+
+        });
+
+        xhr.open("GET", postsAPIRoute);
+
+        xhr.send();
+
+    } catch (error) {
+        console.error(`XHR error code: ${xhr.status}`);
+    }
+    
+
+
+
+}
 
 function loaded() {
     
@@ -255,5 +326,6 @@ function loaded() {
     }
 
     populate();
+    populatePosts();
 
 }
