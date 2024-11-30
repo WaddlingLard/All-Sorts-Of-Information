@@ -17,9 +17,10 @@ function loaded() {
     console.log("Loading Articles!");
     const articleAPIRoute = "https://06hoz1o347.execute-api.us-east-2.amazonaws.com/article";
     const linksText = document.querySelector("#content-header");
+    console.log(linksText)
 
     // If it takes time to load the list
-    linksText.innerHTML += " (Loading)";
+    // linksText.innerHTML += " (Loading)";
 
     try {
 
@@ -37,10 +38,9 @@ function loaded() {
             }
 
             await xhr.response.forEach(element => {
-                const listItem = document.createElement("li");
+                const listItem = document.createElement("p");
 
-                listItem.style.padding = "2.5px";
-                listItem.style.fontSize = "1.1em";
+                listItem.classList = "list-item";
 
                 const link = document.createElement("a");
 
