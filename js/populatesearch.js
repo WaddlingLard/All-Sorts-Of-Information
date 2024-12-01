@@ -24,7 +24,7 @@ searchButton.addEventListener("click", async function () {
     await sessionStorage.setItem("pageID", searchValue.value);
 });
 
-const articleAPIRoute = "https://06hoz1o347.execute-api.us-east-2.amazonaws.com/article";
+export const articleAPIRoute = "https://06hoz1o347.execute-api.us-east-2.amazonaws.com/article";
 
 export function populateArticles() {
 
@@ -33,39 +33,39 @@ export function populateArticles() {
 
     try {
 
-    // let xhr = new XMLHttpRequest();
-    xhr.responseType = "json";
+        // let xhr = new XMLHttpRequest();
+        xhr.responseType = "json";
 
-    xhr.addEventListener("load", function() {
-        console.log("Populating list with elements");
+        xhr.addEventListener("load", function() {
+            console.log("Populating list with elements");
 
-        if (xhr.status === 200) {
-        articles.innerHTML = "";
-        }
+            if (xhr.status === 200) {
+            articles.innerHTML = "";
+            }
 
-        xhr.response.forEach(element => {
-            const option = document.createElement("option");
+            xhr.response.forEach(element => {
+                const option = document.createElement("option");
 
-            // Grabbing the id and name
-            // let id = element.article_id;
-            let id = "Article";
-            let title = element.article_id;
-            // let title = element.id;
+                // Grabbing the id and name
+                // let id = element.article_id;
+                let id = "Article";
+                let title = element.article_id;
+                // let title = element.id;
 
-            option.value = title;
-            option.innerHTML = id;
+                option.value = title;
+                option.innerHTML = id;
 
-            articles.appendChild(option);
+                articles.appendChild(option);
+            });
+
         });
 
-    });
+        xhr.open("GET", articleAPIRoute);
 
-    xhr.open("GET", articleAPIRoute);
-
-    xhr.send();
+        xhr.send();
 
     } catch (error) {
-    console.error(`XHR error code ${xhr.status}`);
+        console.error(`XHR error code ${xhr.status}`);
     }
 
 }

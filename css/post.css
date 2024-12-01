@@ -175,6 +175,8 @@ h2 {
 
 #content-header {
   text-align: left;
+  display: inline-block;
+  padding: 0px 20px;
 }
 
 #content {

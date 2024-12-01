@@ -1,8 +1,28 @@
 import { populateArticles as populate } from "./populatesearch.js";
+import { articleAPIRoute } from "./populatesearch.js";
 
 window.onload = loaded;
 
-const links = document.querySelector("#posts");
+// const links = document.querySelector("#posts");
+const list = document.querySelector("#article-filter");
+
+const filter = document.querySelector("#filter");
+let allPost = document.querySelector("#post-wrapper");
+
+filter.addEventListener("change", function () {
+    let value = filter.value;
+    
+    let children = allPost.childNodes;
+
+    children.forEach(element => {
+        if (element.dataset.articleMetadata !== value && value !== "") {
+            element.style.display = "none";
+        } else {
+            element.style.display = "grid";
+        }
+    });
+
+})
 
 function loaded() {
 
@@ -37,6 +57,7 @@ function loaded() {
                 let id = element.post_id;
                 let articleID = element.article_id;
 
+                post.dataset.articleMetadata = articleID;
                 post.classList = "post";
                 // post.style.display = "inline-block";
 
@@ -98,6 +119,41 @@ function loaded() {
 
     } catch (error) {
         console.error(`XHR error code: ${xhr.status}`);
+    }
+
+    // Populating filter for posts
+    try {
+
+        let xhr = new XMLHttpRequest();
+
+        xhr.responseType = "json";
+
+        xhr.addEventListener("load", function() {
+            console.log("Populating filter with elements!");
+
+            if(xhr.status === 200) {
+                list.innerHTML = "";
+            }
+
+            xhr.response.forEach(element => {
+                const option = document.createElement("option");
+
+                let id = "Article";
+                let title = element.article_id;
+
+                option.value = title;
+                option.innerText = id;
+
+                list.appendChild(option);
+            })
+        })
+
+        xhr.open("GET", articleAPIRoute);
+
+        xhr.send();
+
+    } catch (error) {
+        console.error(`XHR error code ${xhr.status}`);
     }
 
     populate();
