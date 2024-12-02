@@ -3,6 +3,8 @@ import { articleAPIRoute } from "./populatesearch.js";
 
 window.onload = loaded;
 
+export const postAPIRoute = "https://06hoz1o347.execute-api.us-east-2.amazonaws.com/posts";
+
 // const links = document.querySelector("#posts");
 const list = document.querySelector("#article-filter");
 
@@ -27,7 +29,6 @@ filter.addEventListener("change", function () {
 function loaded() {
 
     console.log("Loading Posts!");
-    const postAPIRoute = "https://06hoz1o347.execute-api.us-east-2.amazonaws.com/posts";
     const linksText = document.querySelector("#content-header");
     // const posts = document.querySelector("#posts");
     const posts = document.querySelector("#post-wrapper");

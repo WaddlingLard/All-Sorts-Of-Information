@@ -1,7 +1,7 @@
 import { populateArticles as populate } from "./populatesearch.js";
 
 let pageID = sessionStorage.getItem('pageID');
-const postsAPIRoute = "https://06hoz1o347.execute-api.us-east-2.amazonaws.com/posts";
+const postAPIRoute = "https://06hoz1o347.execute-api.us-east-2.amazonaws.com/posts";
 
 window.onload = loaded;
 
@@ -198,7 +198,7 @@ export async function populatePosts() {
 
         });
 
-        xhr.open("GET", postsAPIRoute);
+        xhr.open("GET", postAPIRoute);
 
         xhr.send();
 

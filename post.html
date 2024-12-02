@@ -8,10 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
     <meta name="author" content="BrianWu">
-    <link rel="stylesheet" href="css/discussion.css">
+    <link rel="stylesheet" href="css/post.css">
 
-    <script type="module" src="js/post.js"></script>
-
+    <script type="module" src="js/loadpost.js"></script>
 
   </head>
 
@@ -22,12 +21,17 @@
       <div id="top">
 
         <hr class="spacer">
+
+
+        <!-- <img id="logo" src="img/placeholder.jpg"> -->
         
         <div id="header-left-col">
         
+          <!-- Able to go back to homepage -->
           <a href="index.html">
             <img id="logo" src="img/www-placeholder.png" alt="The logo of the website.">
           </a>
+          <!-- <img id="logo" src="img/www-placeholder.png"> -->
         
         </div>
         
@@ -49,11 +53,16 @@
                 <caption>Login Window</caption>
                 <thead>
                   <tr>
+                    <!-- <th colspan="col">Info</th> -->
                     <th colspan="2"></th>
+                    <!-- <th colspan="col"></th> -->
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
+                    <!-- <th colspan="col"> -->
+                      <!-- <label for="username">Username: </label> -->
+                    <!-- </th> -->
                     <th colspan="1">
                       <input type="text" name="username" id="username" placeholder="Username">
                     </th>
@@ -62,6 +71,9 @@
                     </td>
                   </tr>
                   <tr>
+                    <!-- <th colspan="col"> -->
+                      <!-- <label for="password">Password: </label> -->
+                    <!-- </th> -->
                     <th colspan="1">
                       <input type="password" name="password" id="password" placeholder="Password">
                     </td>
@@ -91,24 +103,25 @@
 
     <div id="navigation">
 
+      <!-- <hr class="flex-spacer"> -->
 
       <nav>
 
         <div id="nav-choices">
 
           <a class="link" href="topics.html">Topics</a>
-          <a class="link" href="#">Discussions</a>
+          <a class="link" href="discussions.html">Discussions</a>
           <a class="link" href="#">About Us</a>
           <a class="link" href="#">Users? (W.I.P)</a>
 
           <div id="search-form">
-
+            <!-- VV CHANGE VV -->
             <form action="index.html" method="GET">
               <label for="search-bar">Search: </label>
 
               <input id="search-bar" list="articles" name="search-bar">
               <datalist id="articles">
-
+                <!-- Populate list -->
               </datalist>
 
               <button id="search-button" type="submit">Look For</button>
@@ -118,6 +131,8 @@
         </div>
 
       </nav>
+
+      <!-- <hr class="flex-spacer"> -->
       
     </div>
 
@@ -129,32 +144,66 @@
       <hr class="spacer">
 
       <article>
-        <h2>Posts</h2>
+        <!-- <h2>Hello.......</h2> -->
+        <h2>Post</h2>
 
         <div id="content">
 
-          <h3 id="content-header">Discussion Board (Loading)</h3>
+          <h3 id="content-header">Name_of_Post</h3>
 
-          <div id="content-top">
-            <!-- <h3 id="content-header">Discussion Board (Loading)</h3> -->
+          <div id="discussion">
 
-
-            <label for="article-filter">By Article:</label>
-            <input list="article-filter" id="filter" name="filter">
-
-            <datalist id="article-filter">
-
-            </datalist>
           </div>
 
-          <div id="post-wrapper">
-            <!-- <div id="posts"> -->
+          <div id="comments">
 
+            <div id="comments-list">
+              <h4>Comments</h4>
 
-            <!-- </div> -->
+            </div>
+
+            <div id="create-comments">
+              <h4>Post</h4>
+
+              <form id="comment-form">
+
+                <div id="comment-post-window" action="javascript:void(0);">
+
+                  <table id="comment-table">
+                    <caption>Create a comment!</caption>
+                    <thead>
+                      <tr id="table-grid">
+                        <th colspan="1">
+                          <label for="comment-text">Comment: </label>
+                        </th>
+                        <td rowspan="1">
+                          <textarea rows="5" cols="40" id="comment-text" name="comment-text"></textarea>
+                        </td>
+                        <td rowspan="1">
+                          <button type="submit">Post!</button>
+                        </td>
+                      </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                  </table>
+
+                  <!-- <label for="comment-text">Comment: </label> -->
+                  <!-- <input type="text" id="comment-text" name="comment-text"> -->
+                  <!-- <textarea rows="5" cols="40" id="comment-text" name="comment-text"></textarea> -->
+  
+                  <!-- <button type="submit">Post!</button> -->
+                </div>
+                
+              </form>
+
+            </div>
+
           </div>
-
+        
         </div>
+
       </article>
 
       <hr class="spacer">
@@ -164,6 +213,7 @@
 
     <footer>
 
+      <!-- <hr class="spacer"> -->
       <hr class="flex-spacer">
 
       <div id="footer-content">
@@ -193,9 +243,58 @@
         </div>
       </div>
 
+      <!-- <hr class="spacer"> -->
       <hr class="flex-spacer">
 
     </footer>
+
+    <!-- <script>
+
+      let articles = document.querySelector("#articles");
+      window.onload = loaded;
+
+      const articleAPIRoute = "https://06hoz1o347.execute-api.us-east-2.amazonaws.com/article";
+
+      function loaded() {
+
+        try {
+
+          let xhr = new XMLHttpRequest();
+          xhr.responseType = "json";
+
+          xhr.addEventListener("load", function() {
+            console.log("Populating list with elements");
+
+            if (xhr.status === 200) {
+              articles.innerHTML = "";
+            }
+
+            xhr.response.forEach(element => {
+              const option = document.createElement("option");
+
+              // Grabbing the id and name
+              let id = element.article_id;
+              let title = element.title;
+
+              option.value = title;
+              option.innerHTML = id;
+
+              articles.appendChild(option);
+            });
+
+          });
+
+          xhr.open("GET", articleAPIRoute);
+
+          xhr.send();
+
+        } catch (error) {
+          console.error(`XHR error code ${xhr.status}`);
+        }
+
+      }
+
+    </script> -->
     
   </body>
 
