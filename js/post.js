@@ -1,5 +1,6 @@
-import { populateArticles as populate } from "./populatesearch.js";
+import { populateArticles } from "./populatesearch.js";
 import { articleAPIRoute } from "./populatesearch.js";
+import { populateLoaded as searchFunctionality } from "./populatesearch.js";
 
 window.onload = loaded;
 
@@ -157,5 +158,6 @@ function loaded() {
         console.error(`XHR error code ${xhr.status}`);
     }
 
-    populate();
+    populateArticles();
+    searchFunctionality();
 }

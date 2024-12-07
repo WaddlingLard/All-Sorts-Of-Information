@@ -1,6 +1,6 @@
 // Importing function
 // import { setArticle } from "./main.js";
-import { articleAPIRoute, populateArticles as populate } from "./populatesearch.js";
+import { articleAPIRoute, populateArticles as populate, populateArticles, populateLoaded as searchFunctionality } from "./populatesearch.js";
 import { testingToggle } from "../test/testToggle.js";
 
 window.onload = loaded;
@@ -129,6 +129,9 @@ export async function loadArticles() {
     }
 
     linksText.innerHTML = "Articles";
+
+    populateArticles();
+    searchFunctionality();
     
     // Returning successful operation!
     return 200;

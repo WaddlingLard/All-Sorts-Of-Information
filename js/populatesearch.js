@@ -5,9 +5,9 @@ import { testingToggle } from "../test/testToggle.js ";
  * that a user needs to quickly access
  */
 let articles = document.querySelector("#articles");
-window.onload = loaded;
+window.onload = populateLoaded;
 
-function loaded() {
+export function populateLoaded() {
 
     if (!testingToggle) {
         const searchButton = document.querySelector("#search-button");
