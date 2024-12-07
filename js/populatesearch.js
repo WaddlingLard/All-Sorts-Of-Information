@@ -1,28 +1,36 @@
+import { testingToggle } from "../test/testToggle.js ";
+
 /**
  * This file is used solely for the purpose to populate the search bar with all the articles and discussions 
  * that a user needs to quickly access
  */
 let articles = document.querySelector("#articles");
-window.onload = populateArticles;
+window.onload = loaded;
 
-const searchButton = document.querySelector("#search-button");
-let searchValue = document.querySelector("#search-bar");
-let searchForm = document.querySelector("#search-form form") 
+function loaded() {
 
-// console.log(searchValue);
+    if (!testingToggle) {
+        const searchButton = document.querySelector("#search-button");
+        let searchValue = document.querySelector("#search-bar");
+        let searchForm = document.querySelector("#search-form form");
 
-searchValue.addEventListener("change", () => {
-    if (searchValue.value == "") {
-        searchForm.action = "javascript:void(0);";
-    } else {
-        searchForm.action = "/article.html";
+        searchValue.addEventListener("change", () => {
+            if (searchValue.value == "") {
+                searchForm.action = "javascript:void(0);";
+            } else {
+                searchForm.action = "/article.html";
+            }
+        });
+
+        searchButton.addEventListener("click", async function () {
+            console.log(`Changing article to ${searchValue.value}`);
+            await sessionStorage.setItem("pageID", searchValue.value);
+        });
+
+        populateArticles();
     }
-});
 
-searchButton.addEventListener("click", async function () {
-    console.log(`Changing article to ${searchValue.value}`);
-    await sessionStorage.setItem("pageID", searchValue.value);
-});
+}
 
 export const articleAPIRoute = "https://06hoz1o347.execute-api.us-east-2.amazonaws.com/article";
 

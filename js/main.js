@@ -1,4 +1,4 @@
-window.onload = loaded;
+// window.onload = loaded;
 
 // let articleID;
 let pageID = sessionStorage.getItem('pageID');
@@ -29,10 +29,10 @@ export function sayHello() {
 }
 
 /**
- * Sets the articleID with a provided value. This method is deprecated.
+ * Sets the articleID with a provided value.
  * @param {string} id 
  */
-export async function setArticle(id) {
-    console.log(id);
-    articleID = id;
+export function setArticle(id) {
+    sessionStorage.setItem("pageID", id);
+    return sessionStorage.getItem("pageID");
 }

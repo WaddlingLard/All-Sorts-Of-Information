@@ -19,7 +19,7 @@ function loaded() {
         let xhr = new XMLHttpRequest();
         xhr.resposneType = "json";
 
-        xhr.addEventListener("load", async function() {
+        xhr.addEventListener("load", function() {
 
             if (xhr.response) {
 

@@ -177,13 +177,14 @@ export async function populatePosts() {
                     // Editing stylesheet
                     post.style.fontSize = "1.25em";
                     post.style.textAlign = "center";
+                    post.classList = "post";
                     // post.style.color = "#00000";
 
                     const link = document.createElement("a");
     
                     let id = element.post_id;
     
-                    link.href = `discussions.html`;
+                    link.href = `post.html`;
                     link.addEventListener("click", function () {
                         sessionStorage.setItem("postID", id);
                     })
